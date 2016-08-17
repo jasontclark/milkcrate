@@ -5,11 +5,10 @@
 #date       :20160816
 #version    :0.1
 #usage      :./sync_projects.sh
-#notes      :Make sure the OS_REPO_DIR is set.
-#=================================================
+#notes      :Make sure the project repo dirs are set.
+#====================================================
 GITHUB_DIR=/Users/jasonclar/Code/Repos/git/github
 BITBUCKET_DIR=/Users/jasonclar/Code/Repos/git/bitbucket
-PODIO_DIR=/Users/jasonclar/Code/Repos/git/github/podio
 
 # Color settings
 red=`tput setaf 1`
