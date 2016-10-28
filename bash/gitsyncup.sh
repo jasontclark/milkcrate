@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #title      :gitsyncup.sh
-#descripton :Syncs up all your git project
+#descripton :Syncs up all your git projects
 #author     :Jay Clark <jay.clark@gmail.com>
 #date       :20161027
 #version    :0.1
@@ -9,7 +9,7 @@
 #====================================================
 
 
-# Read the gitsync-up config file.
+# Read the gitsyncup config file.
 if [ -r ~/.gitsyncuprc ]; then
   echo "Reading user config...." >&2
   . ~/.gitsyncuprc
