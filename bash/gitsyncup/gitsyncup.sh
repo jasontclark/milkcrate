@@ -75,7 +75,7 @@ run_hyperledger_sync() {
 run_openstack_sync() {
   if [ -d "$OPENSTACK_DIR" ]
   then
-      _run_sync $OPENSTACK_DIR
+      run_sync $OPENSTACK_DIR
   else
       echo "${red}Your OpenStack git directory does not exist. Have you set the directory in your config file? Exiting.${reset}"
       exit 1
@@ -85,7 +85,7 @@ run_openstack_sync() {
 run_ibm_sync() {
   if [ -d "$IBM_DIR" ]
   then
-      _run_sync $IBM_DIR
+      run_sync $IBM_DIR
   else
       echo "${red}Your IBM git directory does not exist. Have you set the directory in your config file? Exiting.${reset}"
       exit 1
