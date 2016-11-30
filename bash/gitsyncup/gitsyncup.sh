@@ -14,7 +14,7 @@ if [ -r ~/.gitsyncuprc ]; then
   echo "Reading user config...." >&2
   . ~/.gitsyncuprc
 else
-  echo "Please set your .gitsyncuprc file."
+  echo "Error: gitsyncuprc configuration file not found. Copy gitsyncuprc.example to ~/.gitsyncuprc and modify as needed."
   exit 1
 fi
 
@@ -82,6 +82,18 @@ run_openstack_sync() {
   fi
 }
 
+run_ibm_sync() {
+  if [ -d "$IBM_DIR" ]
+  then
+      _run_sync $IBM_DIR
+  else
+      echo "${red}Your IBM git directory does not exist. Have you set the directory in your config file? Exiting.${reset}"
+      exit 1
+  fi
+}
+
 run_github_sync
 run_bitbucket_sync
 run_hyperledger_sync
+run_openstack_sync
+run_ibm_sync
