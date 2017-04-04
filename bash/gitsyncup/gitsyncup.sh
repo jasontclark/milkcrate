@@ -5,8 +5,8 @@
 #date       :20161027
 #version    :0.1
 #usage      :./gitsyncup.sh
-#notes      :Make sure your .gitsyncuprc file is set.
-#====================================================
+#notes      :Copy gitsyncuprc.example to ~/.gitsyncuprc.
+#========================================================
 
 
 # Read the gitsyncup config file.
