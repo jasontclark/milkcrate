@@ -26,18 +26,33 @@ reset=`tput sgr0`
 run_sync() {
   pushd $1
 
-  git_projects=( $(ls -l | awk '{print $9}') )
+  if [ $1 == "$GITHUB_DIR" ]
+    then
+      git_orgs=( $(ls -l | awk '{print $9}') )
+      echo "${git_orgs[@]}"
 
-  for i in "${git_projects[@]}"; do
-    echo "${green}Updating $i...${reset}"
+      for i in "${git_orgs[@]}"; do
+        echo "${green}Updating GitHub $i...${reset}"
 
-    cd $i
+        cd $i
 
-    # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful/15316602#15316602
-    # A Better Alternative: Use git up instead of git pull
-    git remote update -p; git merge --ff-only @{u}; cd ..
+        # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful/15316602#15316602
+        # A Better Alternative: Use git up instead of git pull
+        git remote update -p; git merge --ff-only @{u}; cd ..
+      done
+    else
+      git_projects=( $(ls -l | awk '{print $9}') )
 
-  done
+      for i in "${git_projects[@]}"; do
+        echo "${green}Updating $i...${reset}"
+
+        cd $i
+
+        # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful/15316602#15316602
+        # A Better Alternative: Use git up instead of git pull
+        git remote update -p; git merge --ff-only @{u}; cd ..
+      done
+  fi
 
   popd
 }
@@ -96,4 +111,3 @@ run_github_sync
 run_bitbucket_sync
 run_hyperledger_sync
 run_openstack_sync
-run_ibm_sync
